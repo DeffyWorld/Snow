@@ -1,0 +1,1535 @@
+// ***********************************************************************************************************************
+// --Import--
+// ***********************************************************************************************************************
+@import 'reset';
+@import 'variables';
+@import 'mixins';
+
+
+
+
+
+// -----------------------------------------------------------------------------------------------------------------------
+// --Header--
+// -----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+.header {
+    background-color: $header-bg;
+    min-height: 670px;
+    overflow: hidden;
+
+
+    &__container {
+        
+
+
+        &_img {
+            width: 85px;
+            margin-top: 38px;
+            position: relative;
+            right: 30px;
+
+
+            img {
+                display: block;
+                max-width: 100%;
+            }
+        }
+    }
+}
+
+// Hamburger start
+#menuToggle
+{
+  display: block;
+  position: relative;
+  top: 40px;
+  left: 70px;
+  
+  z-index: 1;
+  
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle a
+{
+  text-decoration: none;
+  color: #232323;
+  
+  transition: color 0.3s ease;
+}
+
+#menuToggle a:hover
+{
+  color: tomato;
+}
+
+
+#menuToggle input
+{
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  
+  cursor: pointer;
+  
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+  
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span
+{
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  
+  background: #cdcdcd;
+  border-radius: 3px;
+  
+  z-index: 1;
+  
+  transform-origin: 4px 0px;
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#menuToggle span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+#menu
+{
+  position: absolute;
+  width: 5000px;
+  height: 99vw;
+
+  margin: -66px 0 0 -100vw;
+  padding: 50px;
+  padding-top: 125px;
+  overflow: hidden; 
+  
+  background: #ededed;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  
+  transform-origin: 0% 0%;
+  transform: translate(100%, 0);
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li
+{
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+#menuToggle input:checked ~ ul
+{
+  transform: none;
+}
+// Hamburger end
+
+
+.header__title {
+  margin-top: 185px;
+
+
+  &_text {
+    font-family: 'Work Sans';
+    font-weight: 500;
+    font-size: 13px;
+    text-align: center;
+    color: #fff;
+    letter-spacing: 3.5px;
+  }
+
+  &_main {
+    font-family: 'Playfair Display';
+    font-weight: 700;
+    font-size: 48px;
+    text-align: center;
+    color: #fff;
+    padding-top: 14px;
+    letter-spacing: 1.5px;
+    line-height: 60px;
+
+
+    span {
+      font-style: italic;
+      font-weight: 400;
+    }
+  }
+}
+
+
+
+//Breakpoints
+
+// xxl
+@media (min-width: 1401px) {
+  #menuToggle input {
+    right: 3vw;
+  }
+}
+
+// xl
+@media (max-width: 1400px) {
+  #menuToggle span {
+    right: 4.5vw;
+  }
+
+  #menuToggle input {
+    right: 7vw;
+  }
+}
+
+// lg
+@media (max-width: 1200px) {
+  #menuToggle span {
+    right: 7vw;
+  }
+
+  #menuToggle input {
+    right: 9vw;
+  }
+}
+
+// md
+@media (max-width: 992px) {
+  #menuToggle span {
+    right: 10vw;
+  }
+
+  #menuToggle input {
+    right: 10vw;
+  }
+
+
+  .header__title {
+    margin-top: 145px;
+
+
+    &_main {
+      font-size: 42px;
+      letter-spacing: 1.4px;
+      line-height: 60px;
+    }
+  }
+}
+
+// sm
+@media (max-width: 768px) {
+  .header {
+
+
+    &__container {
+
+
+        &_img {
+            position: relative;
+        }
+    }
+  }
+
+  #menuToggle span {
+    right: 10vw;
+  }
+
+  #menuToggle input {
+    right: 8vw;
+  }
+
+
+  .header__title {
+    margin-top: 135px;
+  
+  
+    &_main {
+      font-size: 40px;
+      letter-spacing: 1.3px;
+      line-height: 48px;
+    }
+  }
+}
+
+// none
+@media (max-width: 576px) {
+  .header {
+
+
+    &__container {
+
+
+      &_img {
+          position: relative;
+          left: 15px;
+      }
+    }
+  }
+
+  #menuToggle span {
+    right: 23vw;
+  }
+
+  #menuToggle input {
+    right: 18vw;
+  }
+
+
+  
+  .header {
+    min-height: 570px;
+  }
+
+  .header__title {
+    margin-top: 105px;
+  
+    &_text {
+      font-size: 12px;
+      letter-spacing: 3.2px;
+    }
+
+    &_main {
+      font-size: 35px;
+      letter-spacing: 1.2px;
+      line-height: 42px;
+    }
+  }
+}
+
+@media (max-width: 380px) {
+  #menuToggle span {
+    right: 29vw;
+  }
+
+  #menuToggle input {
+    right: 20vw;
+  }
+
+
+  .header {
+    min-height: 540px;
+  }
+
+  .header__title {
+    margin-top: 95px;
+  
+    &_text {
+      font-size: 12px;
+      letter-spacing: 3.2px;
+    }
+
+    &_main {
+      font-size: 30px;
+      letter-spacing: 1px;
+      line-height: 35px;
+    }
+  }
+}
+
+
+
+
+
+
+
+// -----------------------------------------------------------------------------------------------------------------------
+// --About--
+// -----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+.about {
+  min-height: 422px;
+  background-color: $main-bg;
+
+
+  &__title {
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-weight: 700;
+    font-size: 38px;
+    margin-top: 80px;
+    letter-spacing: 1px;
+  }
+
+
+  &__text {
+    text-align: center;
+    font-family: 'Work Sans';
+    color: $text;
+    font-weight: 400;
+    font-size: 15px;
+    margin-top: 10px;
+    line-height: 24px;
+    line-height: 1.6;
+  }
+
+
+  &__image {
+    margin-top: 17px;
+    text-align: center;
+  }
+}
+
+
+
+//Breakpoints
+
+// xxl
+@media (min-width: 1401px) {
+
+}
+
+// xl
+@media (max-width: 1400px) {
+
+}
+
+// lg
+@media (max-width: 1200px) {
+
+}
+
+// md
+@media (max-width: 992px) {
+  .about {
+    min-height: 385px;
+  
+  
+    &__title {
+      font-size: 38px;
+      margin-top: 70px;
+      letter-spacing: 1px;
+      line-height: 43px;
+    }
+  }
+}
+
+// sm
+@media (max-width: 768px) {
+  .about {
+    min-height: 422px;
+  
+  
+    &__title {
+      font-size: 32px;
+      margin-top: 60px;
+      letter-spacing: 1px;
+      line-height: 38px;
+    }
+
+    &__image {
+      margin-top: 13px;
+      margin-left: -27px;
+      text-align: center;
+    }
+  }
+}
+
+// none
+@media (max-width: 576px) {
+  .about {
+    min-height: 360px;
+  
+  
+    &__title {
+      font-size: 32px;
+      margin-top: 60px;
+      letter-spacing: 1px;
+      line-height: 38px;
+    }
+
+    &__text {
+      font-size: 15px;
+      margin-top: 8px;
+      line-height: 20px;
+      line-height: 1.3;
+    }
+
+    &__image {
+      margin-top: 13px;
+      margin-left: -20px;
+      text-align: center;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 380px) {
+  .about {
+    min-height: 400px;
+  
+  
+    &__title {
+      font-size: 32px;
+      margin-top: 60px;
+      letter-spacing: 1px;
+      line-height: 38px;
+    }
+
+    &__text {
+      font-size: 15px;
+      margin-top: 8px;
+      line-height: 20px;
+      line-height: 1.3;
+    }
+
+    &__image {
+      margin-top: 13px;
+      margin-left: -20px;
+      text-align: center;
+    }
+  }
+}
+
+
+
+
+
+
+
+// -----------------------------------------------------------------------------------------------------------------------
+// --Portfolio--
+// -----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+.portfolio {
+  min-height: 258px;
+  background-image: url(/img/bg-pattern.jpg);
+
+
+  &__item {
+    margin-top: 104px;
+    margin-left: 10px;
+  }
+
+
+  &__icon {
+    font-size: 48px;
+    color: #ffffff;
+  }
+
+
+  &__main {
+    font-family: 'Work Sans';
+    color: #ffffff;
+    min-width: 160px;
+    margin-top: 22px;
+    margin-left: 20px;
+
+
+    &_numbers {
+      font-size: 18px;
+      letter-spacing: 0.54px;
+      line-height: 0.2;
+    }
+
+
+    &_text {
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+}
+
+
+
+
+
+//Breakpoints
+
+// xxl
+@media (min-width: 1401px) {
+
+}
+
+// xl
+@media (max-width: 1400px) {
+
+}
+
+// lg
+@media (max-width: 1200px) {
+
+}
+
+// md
+@media (max-width: 992px) {
+  .portfolio {
+    min-height: 258px;
+    background-image: url(/img/bg-pattern.jpg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 40px;
+  
+  
+    &__item {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+// sm
+@media (max-width: 768px) {
+  .portfolio {
+    min-height: 258px;
+    background-image: url(/img/bg-pattern.jpg);
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 40px;
+  
+  
+    &__item {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+// none
+@media (max-width: 576px) {
+
+}
+
+@media (max-width: 380px) {
+  
+}
+
+
+
+
+
+
+
+// -----------------------------------------------------------------------------------------------------------------------
+// --Projects--
+// -----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+.projects {
+  min-height: 1447px;
+  background-color: $main-bg;
+
+
+  &__title {
+    font-family: 'Playfair Display';
+    font-size: 38px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-top: 79px;
+  }
+
+
+  &__description {
+    font-family: WorkSans;
+    font-size: 15px;
+    color: $text;
+    text-align: center;
+    max-width: 688px;
+    margin: auto;
+    margin-top: 21px;
+    letter-spacing: 0.08px;
+  }
+
+
+
+
+  &__grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    max-width: 1170px;
+    margin: auto;
+    margin-top: 57px;
+
+
+    &_block {
+      // ...
+
+
+      &1 {
+        @include grid-pos(1, 2, 1, 2);
+
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+
+      &2 {
+        @include grid-pos(2, 3, 1, 3);
+
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+
+      &3 {
+        @include grid-pos(3, 4, 1, 2);
+
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+
+      &4 {
+        @include grid-pos(1, 2, 2, 3);
+
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+
+      &5 {
+        @include grid-pos(3, 4, 2, 4);
+
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+
+      &6 {
+        @include grid-pos(1, 2, 3, 5);
+
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+
+      &7 {
+        @include grid-pos(2, 3, 3, 4);
+        @include size(370px, 250px);
+
+        background-color: white;
+
+
+        &_title {
+          font-family: 'Playfair Display';
+          font-size: 24px;
+          font-weight: bold;
+          letter-spacing: 0.72px;
+          text-align: center;
+          margin-top: 89px;
+        }
+
+        &_text {
+          font-family: WorkSans;
+          font-size: 14px;
+          font-weight: 500;
+          letter-spacing: 0.35px;
+          text-align: center;
+          text-transform: uppercase;
+          margin-top: 12px;
+        }
+      }
+
+      &8 {
+        @include grid-pos(2, 3, 4, 5);
+
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+
+      &9 {
+        @include grid-pos(3, 4, 4, 5);
+
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+//Breakpoints
+
+// xxl
+@media (min-width: 1401px) {
+
+}
+
+// xl
+@media (max-width: 1400px) {
+
+}
+
+// lg
+@media (max-width: 1200px) {
+  .projects__grid-wrapper {
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+  }
+}
+
+// md
+@media (max-width: 992px) {
+  .projects {
+    display: none;
+  }
+}
+
+// sm
+@media (max-width: 768px) {
+
+}
+
+// none
+@media (max-width: 576px) {
+
+}
+
+@media (max-width: 380px) {
+  
+}
+
+
+
+
+
+
+
+// -----------------------------------------------------------------------------------------------------------------------
+// --Text slider--
+// -----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+.text-slider {
+  min-height: 500px;
+  background-image: url(/img/bg-pattern.jpg);
+
+
+  &__container {
+    min-height: 500px;
+  }
+
+  &__wrapper {
+    min-height: 500px;
+
+
+    &_pagination {
+      top: 431px;
+
+
+      .swiper-pagination-bullet {
+        background-color: #5b5b5b;
+
+
+        &-active-main {
+          background-color: white;
+        }
+      }
+    }
+  }
+
+  &__slide {
+    // ...
+
+
+    &_text {
+      font-family: PlayfairDisplay;
+      font-size: 24px;
+      font-style: italic;
+      line-height: 1.5;
+      letter-spacing: 0.9px;    
+      text-align: center;
+      color: white;
+      margin-top: 173px;
+    }
+
+    &_name {
+      font-family: Work Sans;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.35px;
+      text-align: center;
+      color: white;
+      text-transform: uppercase;
+      margin-top: 25px;
+    }
+  }
+}
+
+
+
+
+
+//Breakpoints
+
+// xxl
+@media (min-width: 1401px) {
+
+}
+
+// xl
+@media (max-width: 1400px) {
+
+}
+
+// lg
+@media (max-width: 1200px) {
+
+}
+
+// md
+@media (max-width: 992px) {
+  .text-slider__slide_text {
+    margin-top: 123px;
+    font-size: 23px;
+    line-height: 1.4;
+    letter-spacing: 1px;  
+  }
+}
+
+// sm
+@media (max-width: 768px) {
+
+}
+
+// none
+@media (max-width: 576px) {
+  .text-slider__slide_text {
+    margin-top: 100px;
+    font-size: 22px;
+    line-height: 1.4;
+    letter-spacing: 0.8px;  
+  }
+}
+
+@media (max-width: 380px) {
+  .text-slider__slide_text {
+    margin-top: 90px;
+    font-size: 22px;
+    line-height: 1.4;
+    letter-spacing: 0.8px;  
+  }
+}
+
+
+
+
+
+
+
+// -----------------------------------------------------------------------------------------------------------------------
+// --Logos--
+// -----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+.logos {
+  min-height: 200px;
+  background-color: white;
+
+
+  &__wrapper {
+    @include size(1070px, 200px);
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__item {
+
+
+    &_logo {
+      // ...
+
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+
+
+
+
+//Breakpoints
+
+// xxl
+@media (min-width: 1401px) {
+
+}
+
+// xl
+@media (max-width: 1400px) {
+
+}
+
+// lg
+@media (max-width: 1200px) {
+  .logos__wrapper {
+    @include size(960px, 200px);
+    justify-content: space-between;
+  }
+}
+
+// md
+@media (max-width: 992px) {
+  .logos__wrapper {
+    @include size(720px, 200px);
+    justify-content: space-between;
+  }
+}
+
+// sm
+@media (max-width: 768px) {
+  .logos__wrapper {
+    @include size(540px, 200px);
+  }
+}
+
+// none
+@media (max-width: 576px) {
+  .logos__wrapper {
+    @include size(400px, 200px);
+  }
+}
+
+@media (max-width: 410px) {
+  .logos__wrapper {
+    flex-direction: column;
+    min-height: 400px;
+    justify-content: space-evenly;
+  }
+}
+
+
+
+
+
+
+
+// -----------------------------------------------------------------------------------------------------------------------
+// --Contact--
+// -----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+.contact {
+  min-height: 622px;
+  background-color: $main-bg;
+
+
+  &__info {
+    min-height: 340px;
+    margin-top: 95px;
+
+
+    &_title {
+      font-family: 'Playfair Display';
+      font-size: 38px;
+      font-weight: bold;
+      letter-spacing: 0.95px;
+    }
+
+    &_description {
+      @include size(424, 86);
+      font-family: Work Sans;
+      font-size: 15px;
+      line-height: 1.6;
+      letter-spacing: 0.08px;
+      color: $text;
+      margin-top: 23px;
+      margin-bottom: 25px;
+    }
+
+    &_data {
+      @include size(320px, 119px);
+
+      p {
+        font-family: WorkSans;
+        font-size: 15px;
+        line-height: 1.5;
+        letter-spacing: 0.08px;
+        color: $text;
+        
+
+        span {
+          font-weight: 600;
+          color: black;
+        }
+      }
+    }
+  }
+
+
+
+  &__forms {
+    min-height: 326px;
+    margin-top: 113px;
+
+
+    &_name {
+      width: 100%;
+      height: 48px;
+
+      input {
+        width: 100%;
+        height: 100%;
+        padding-left: 20px;
+      }
+    }
+
+    &_email {
+      width: 100%;
+      height: 48px;
+
+      input {
+        width: 100%;
+        height: 100%;
+        padding-left: 20px;
+      }
+    }
+
+    &_title {
+      width: 100%;
+      height: 48px;
+      margin-top: 30px;
+
+      input {
+        width: 100%;
+        height: 100%;
+        padding-left: 20px;
+      }
+    }
+
+    &_comment {
+      width: 100%;
+      height: 170px;
+      margin-top: 30px;
+
+      textarea {
+        width: 100%;
+        height: 100%;
+        padding-left: 20px;
+        padding-top: 10px;
+      }
+    }
+  }
+
+
+  &__button {
+    width: 180px;
+    height: 54px;
+    background-color: #252525;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    color: white;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+
+    &:hover {
+      background-color: white; /* Green */
+      color: $text;
+      border: 1px solid $text;
+    }
+
+    p {
+      width: 114px;
+      height: 9px;    
+      font-family: WorkSans;
+      font-size: 14px;
+    }
+  }
+}
+
+
+
+
+
+//Breakpoints
+
+// xxl
+@media (min-width: 1401px) {
+
+}
+
+// xl
+@media (max-width: 1400px) {
+
+}
+
+// lg
+@media (max-width: 1200px) {
+
+}
+
+// md
+@media (max-width: 992px) {
+  .contact__button {
+    margin-bottom: 30px;
+  }
+
+  .contact__forms {
+    margin-top: 70px;
+
+    &_email {
+      margin-top: 17px;
+    }
+  }
+}
+
+// sm
+@media (max-width: 768px) {
+
+}
+
+// none
+@media (max-width: 576px) {
+
+}
+
+@media (max-width: 380px) {
+  .contact__button {
+    margin-left: 10px;
+  }
+}
+
+
+
+
+
+
+
+// -----------------------------------------------------------------------------------------------------------------------
+// --Footer--
+// -----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+.footer {
+  background-color: $footer-bg;
+
+  &-up {
+    min-height: 413px;
+    border-bottom: 1px solid gray;
+  }
+
+  &__about {
+    // ...
+
+
+    &_title {
+      font-family: 'Playfair Display';
+      font-size: 20px;
+      letter-spacing: 0.5px;
+      color: white;
+      margin-top: 93px;
+    }
+
+    &_text {
+      font-family: 'Playfair Display';
+      font-size: 15px;
+      line-height: 1.6;
+      letter-spacing: 0.38px;
+      color: $text-light;
+      margin-top: 38px; 
+    }
+
+    &_social {
+      margin-top: 43px;
+
+      i {
+        color: $text-light;
+        margin-right: 11px;
+      }
+    }
+  }
+
+
+
+  &__twits {
+    // ...
+
+
+    &_title {
+      font-family: 'Playfair Display';
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      color: white;
+      margin-top: 93px;
+    }
+
+    &_list {
+      margin-top: 39px;
+
+      &_item {
+        font-family: 'Work Sans';
+        font-size: 15px;
+        line-height: 1.6;
+        letter-spacing: 0.08px;
+        color: $text-light;
+        margin-bottom: 26px;
+        list-style-image: url(/img/twitter.png);
+      }
+    }
+  }
+
+
+
+  &__instagram {
+    // ...
+
+
+    &_title {
+      font-family: 'Playfair Display';
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      color: white;
+      margin-top: 93px;
+      margin-left: 30px;
+    }
+
+    &_images {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 36px;
+
+      &_img {
+        width: 85px;
+        height: 85px;
+        background-color: #7d7d7d;
+        margin-bottom: 5px;
+        margin-right: 5px;
+      }
+    }
+  }
+
+
+  &-down {
+    min-height: 70px;
+  }
+
+  &__copy {
+    display: flex;
+    min-height: 70px;
+    justify-content: center;
+    align-items: center;
+
+
+    p {
+      font-family: 'Work Sans';
+      font-size: 14px;
+      letter-spacing: 0.07px;
+      color: $text-light;
+      margin-bottom: 0px;
+    }
+  }
+}
+
+
+
+//Breakpoints
+
+// xxl
+@media (min-width: 1401px) {
+
+}
+
+// xl
+@media (max-width: 1400px) {
+
+}
+
+// lg
+@media (max-width: 1200px) {
+  .footer__instagram_title {
+    margin-left: 13px;
+  }
+}
+
+// md
+@media (max-width: 992px) {
+  .footer__instagram_title {
+    margin-left: 32px;
+  }
+
+  .footer__instagram_images {
+    margin-bottom: 15px;
+  }
+}
+
+// sm
+@media (max-width: 768px) {
+  .footer__about {
+    // ...
+
+
+    &_title {
+      margin-top: 88px;
+    }
+
+    &_text {
+      margin-top: 30px;
+    }
+
+    &_social {
+      margin-top: 30px;
+    }
+  }
+
+
+  .footer__twits_list_item {
+    line-height: 1.3;
+  }
+}
+
+// none
+@media (max-width: 576px) {
+  .footer__about {
+    // ...
+
+
+    &_title {
+      margin-top: 88px;
+    }
+
+    &_text {
+      margin-top: 30px;
+      font-size: 14px;
+    }
+  }
+
+  .footer__twits_list {
+    margin-bottom: 30px;
+  }
+  .footer__twits_list_item {
+    line-height: 1.3;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  
+}

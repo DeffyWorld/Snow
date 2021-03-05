@@ -1,0 +1,10 @@
+@mixin size($max-width, $min-height) {
+    max-width: $max-width;
+    min-height: $min-height;
+}
+@mixin grid-pos($column-start, $column-end, $row-start, $row-end) {
+    grid-column-start: $column-start;
+    grid-column-end: $column-end;
+    grid-row-start: $row-start;
+    grid-row-end: $row-end;
+}
